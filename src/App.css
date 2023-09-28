@@ -4,27 +4,33 @@
   padding: 2rem;
 }
 
-.border {
-  border: 1px solid black;
-  padding: 10px;
+html{
+    background-color: #c4c2c245;
 }
 
-.wrapper-nav{
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 10px;
+.wrapper__post{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
 }
 
 .card{
-  border: 1px solid black;
-  padding: 20px 15px;
-  margin: 10px 0;
-  display: flex;
-  gap: 20px;
-    height: 25px;
+    border: 1px solid rgba(25, 118, 210, 0.5);
+    padding: 20px 15px;
+    margin: 10px 0;
+    display: flex;
+    gap: 20px;
+    min-height: 25px;
     overflow: hidden;
-  justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 900px) {
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .card p{
@@ -43,32 +49,18 @@
 .card__title{
     width: 250px;
     font-weight: 500;
-    overflow: hidden; 
+    white-space: nowrap;   
+    overflow: hidden;   
+    text-overflow: ellipsis;
 }
 
 .card__descr{
-  height: 50px;
-  flex: 1;
-  white-space: nowrap;     /* Запрет переноса текста */
-  overflow: hidden;        /* Скрытие лишнего текста */
-  text-overflow: ellipsis; /* Добавление многоточия */
+    flex: 1;
+    white-space: nowrap;   
+    overflow: hidden;   
+    text-overflow: ellipsis;
 }
 
-.card__buttons{
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.filter-wrapper{
-  padding-top: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.filter-input{
-  width: 100%;
-  border: 1px solid teal;
-}
 
 
 /* CSSTransition */

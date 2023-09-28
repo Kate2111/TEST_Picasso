@@ -8,8 +8,8 @@ export interface IRoute {
 }
 
 export enum RouterNames {
-    MAIN_PAGE = '/post',
-    POST_ID = '/post/:id'
+    MAIN_PAGE = '/TEST_Picasso',
+    POST_ID = '/TEST_Picasso/:id'
 }
 
 export const routes: IRoute[] = [

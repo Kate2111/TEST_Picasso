@@ -1,38 +1,45 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { CardActionArea } from '@mui/material';
 import { useParams} from 'react-router-dom';
 import MyButton from './UI/button/MyButton';
 import {useNavigate} from 'react-router-dom';
-import { useGetPostByIdQuery } from '@/services/PostService';
+import { useGetPostByIdQuery } from '@/app/services/PostService';
+
 
 const PostDescription: React.FC = () => {
     const navigate = useNavigate();
-    const params = useParams();
-    let index: number;
-    if(params.id) {
-        index = parseInt(params.id);
-    }
+    const { id } = useParams<{id: any}>(); 
+    const index: number = parseInt(id);
 
-    const {data: postArray} = useGetPostByIdQuery();
+    const { data: post } = useGetPostByIdQuery(index);
 
     return (<>
-            <MyButton  clickHandler={() =>navigate(`/post`)}>go back</MyButton>
             
-            <div className='wrapper-book'>
+            <div className='wrapper__post'>
+                <MyButton  clickHandler={() =>navigate(`/TEST_Picasso`)}>go back</MyButton>
+                
                 {
-                    [...postArray].map(item => {
-                        if(item.id === index) {
-                            console.log(item)
-                            return  <div key={item.id}>
-                                        <h1>{item.title}</h1> 
-                                        <h2>{item.body}</h2>
-                                    </div>
-            
-                        }
-                    })
+                    post && <Card sx={{ maxWidth: 500 }}>
+                                <CardActionArea>
+                                    <CardContent>
+                                        <Typography gutterBottom variant="h4" component="div">
+                                            {`Post number ${post.id}`}
+                                        </Typography>
+                                        <Typography gutterBottom variant="h5" component="div">
+                                            {post.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {post.body}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
                 }
             </div>
-  
-    </>
-        
+        </>
     );
 };
 
