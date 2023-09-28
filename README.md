@@ -9,4 +9,5 @@ https://kate2111.github.io/TEST_Picasso/
     <li> Redux Toolkit, RTK Query</li>
     <li> React Transition Group</li>
     <li> Material UI</li>
+    <li> Intersection Observer API</li>
 </ul>
